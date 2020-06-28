@@ -1,7 +1,8 @@
 # Pokedex project
 
 Dit is mijn persoonlijk development project. Ik heb een pokedex gemaakt waarin je de orginele 151 pokemon kunt bekijken met informatie over hierover.
-Dit project heb ik ontwikkeld met behulp van React en [PokeAPI](https://pokeapi.co/).
+Dit project heb ik ontwikkeld met behulp van React en [PokeAPI](https://pokeapi.co/). <br/>
+De online versie is hier te vinden: https://i417398.hera.fhict.nl/pokedex/
  
 # Installeren
 
