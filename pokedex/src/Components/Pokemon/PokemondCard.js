@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -23,6 +24,17 @@ const Card = styled.div`
   -o-user-select: none;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+`;
 
 export default class PokemonCard extends Component {
   state = {
@@ -33,11 +45,10 @@ export default class PokemonCard extends Component {
     toManyRequests: false
   };
 
+  /* Dit laat pokemon nummer naam en afbeelding in de kaarten zien*/
   componentDidMount() {
     const { name, url } = this.props;
-
     const pokemonIndex = url.split('/')[url.split('/').length - 2];
-    //const imageUrl = `./sprites/pokemon/${pokemonIndex}.png`;
     const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
 
     this.setState({ name, imageUrl, pokemonIndex });
@@ -46,8 +57,8 @@ export default class PokemonCard extends Component {
   render() {
     return (
       <div className="col-md-3 col-sm-6 mb-5">
+        <StyledLink to={`pokemon/${this.state.pokemonIndex}`}>
           <Card className="card">
-            <h5 className="card-header">{this.state.pokemonIndex}</h5>
             {this.state.imageLoading ? (
               <img
                 style={{ width: '5em', height: '5em' }}
@@ -76,7 +87,8 @@ export default class PokemonCard extends Component {
             ) : null}
             <div className="card-body mx-auto">
               <h6 className="card-title">
-                {this.state.name
+              {this.state.pokemonIndex}.  &nbsp;
+                 {this.state.name
                   .toLowerCase()
                   .split(' ')
                   .map(s => s.charAt(0).toUpperCase() + s.substring(1))
@@ -84,6 +96,7 @@ export default class PokemonCard extends Component {
               </h6>
             </div>
           </Card>
+        </StyledLink>
       </div>
     );
   }

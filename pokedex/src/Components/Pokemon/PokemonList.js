@@ -12,10 +12,10 @@ export default class PokemonList extends Component {
         pokemon: null
     };
 
-   async componentDidMount () {
-const res = await axios.get(this.state.url);
-this.setState({pokemon: res.data['results'] });
-    }
+    async componentDidMount() {
+        const res = await axios.get(this.state.url);
+        this.setState({ pokemon: res.data['results'] });
+      }
 
   render() {
     return (
